@@ -5,22 +5,31 @@ static const unsigned int borderpx  = 1;        /* border pixel of windows */
 static const unsigned int snap      = 32;       /* snap pixel */
 static const int showbar            = 1;        /* 0 means no bar */
 static const int topbar             = 1;        /* 0 means bottom bar */
-static const char *fonts[]          = { "JetBrainsMono Nerd Font:size=12" };
-static const char dmenufont[]       = "JetBrainsMono Nerd Font:size=12";
-static const char col_gray1[]       = "#222222";
-static const char col_gray2[]       = "#444444";
-static const char col_gray3[]       = "#bbbbbb";
-static const char col_gray4[]       = "#eeeeee";
-static const char col_cyan[]        = "#005577";
+static const char *fonts[]          = { "RobotoMono Nerd Font:size=12" };
+static const char dmenufont[]       = "RobotoMono Nerd Font:size=12";
+static const char border_dark[]     = "#191A21";
+static const char bg_dark[]       	= "#1E1F29";
+static const char bg_norm[]       	= "#282a36";
+static const char fg_norm[]      	= "#f8f8f2";
+static const char selec[]       	= "#44475a";
+static const char comment[]       	= "#6272a4";
+static const char c_cyan[]      	= "#8be9fd";
+static const char c_green[]      	= "#50fa7b";
+static const char c_orange[]      	= "#ffb86c";
+static const char c_pink[]      	= "#ff79c6";
+static const char c_purple[]      	= "#bd93f9";
+static const char c_red[]      		= "#ff5555";
+static const char c_yellow[]      	= "#f1fa8c";
+
 static const char *colors[][3]      = {
-	/*               fg         bg         border   */
-	[SchemeNorm] = { col_gray3, col_gray1, col_gray2 },
-	[SchemeSel]  = { col_gray4, col_cyan,  col_cyan  },
-	[SchemeStatus]  = { col_gray3, col_gray1,  "#000000"  }, // Statusbar right {text,background,not used but cannot be empty}
-	[SchemeTagsSel]  = { col_cyan, col_gray1,  "#000000"  }, // Tagbar left selected {text,background,not used but cannot be empty}
-    [SchemeTagsNorm]  = { col_gray4, col_gray1,  "#000000"  }, // Tagbar left unselected {text,background,not used but cannot be empty}
-    [SchemeInfoSel]  = { col_gray4, col_cyan,  "#000000"  }, // infobar middle  selected {text,background,not used but cannot be empty}
-    [SchemeInfoNorm]  = { col_gray3, col_gray1,  "#000000"  }, // infobar middle  unselected {text,background,not used but cannot be empty}
+	/*               		fg         bg         border   */
+	[SchemeNorm] 		= { fg_norm, c_green, border_dark },
+	[SchemeSel]  		= { fg_norm, c_green,  border_dark  },
+	[SchemeStatus]  	= { fg_norm, bg_dark,  border_dark  }, // Statusbar right {text,background,not used but cannot be empty}
+	[SchemeTagsSel]  	= { c_purple, bg_dark,  border_dark  }, // Tagbar left selected {text,background,not used but cannot be empty}
+    [SchemeTagsNorm]  	= { fg_norm, bg_dark,  border_dark  }, // Tagbar left unselected {text,background,not used but cannot be empty}
+    [SchemeInfoSel] 	= { fg_norm, bg_norm,  border_dark  }, // infobar middle  selected {text,background,not used but cannot be empty}
+    [SchemeInfoNorm]  	= { fg_norm, bg_dark,  border_dark  }, // infobar middle  unselected {text,background,not used but cannot be empty}
 };
 
 /* tagging */
@@ -44,8 +53,8 @@ static const int resizehints = 1;    /* 1 means respect size hints in tiled resi
 
 static const Layout layouts[] = {
 	/* symbol     arrange function */
-	{ "[]=",      tile },    /* first entry is default */
-	{ "><>",      NULL },    /* no layout function means floating behavior */
+	{ " ",      tile },    /* first entry is default */
+	{ " ",      NULL },    /* no layout function means floating behavior */
 	{ "[M]",      monocle },
 };
 
@@ -62,8 +71,8 @@ static const Layout layouts[] = {
 
 /* commands */
 static char dmenumon[2] = "0"; /* component of dmenucmd, manipulated in spawn() */
-static const char *dmenucmd[] = { "dmenu_run", "-m", dmenumon, "-fn", dmenufont, "-nb", col_gray1, "-nf", col_gray3, "-sb", col_cyan, "-sf", col_gray4, NULL };
-static const char *termcmd[]  = { "st", "scroll", NULL };
+static const char *dmenucmd[] = { "dmenu_run", "-m", dmenumon, "-fn", dmenufont, "-nb", bg_dark, "-nf", fg_norm, "-sb", c_purple, "-sf", bg_norm, NULL };
+static const char *termcmd[]  = { "st", NULL };
 
 static Key keys[] = {
 	/* modifier                     key        function        argument */
